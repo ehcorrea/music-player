@@ -1,13 +1,12 @@
 const buttons = document.querySelectorAll('button');
-const image = document.querySelectorAll('img');
-const p = document.querySelectorAll('p');
+let images = document.querySelectorAll("img");
+let nomes = document.querySelectorAll("p");
 
-const musics = [
-  {
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOOCXhI9T4YdreEByvjrCpvPsigy-H-ZTtCA&usqp=CAU",
-    nome: "Disaster",
-    music: ""
-  },
+const musics = [{
+  img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOOCXhI9T4YdreEByvjrCpvPsigy-H-ZTtCA&usqp=CAU",
+  nome: "Disaster",
+  music: ""
+},
   {
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjzSjn8hQD0TvzznW25Z4lmgLblq0NbxpREA&usqp=CAU",
     nome: "Фонк для бега",
@@ -32,14 +31,10 @@ const musics = [
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFgszZJTMgXz73HdUokiP8_MWoud1qkLyiPw&usqp=CAU",
     nome: "All Alone",
     music: ""
-  }
-];
+  }];
 
-
-musics.forEach((music) => {
-  console.log(music.nome)
+musics.forEach((music, index) => {
+  images[index].src = music.img
 });
 
-
-
-
+console.log(images.length, musics.length)
