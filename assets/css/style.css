@@ -21,6 +21,8 @@ h1 {
 }
 
 button {
+  border: none;
+  background-color: #27197c;
   margin: 10px 29px;
   height: 300px;
   width: 300px;
