@@ -6,53 +6,95 @@
 }
 
 body {
-  background-color: #15315f;
+  background-color: #232831;
+  color: white;
+
+}
+
+div#list ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: yellow;
+  border-bottom: 2px solid yellow;
+  height: 2rem;
+  width: 7rem;
 }
 
 div#container {
-  display: table;
-  vertical-align: middle
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
   margin: 10px 0;
   text-align: center;
-  color: white;
 }
 
 button {
+  display: flex;
+  align-items: center;
+  background-color: #232831;
+  color: white;
   border: none;
-  background-color: #27197c;
-  margin: 10px 29px;
-  height: 300px;
-  width: 300px;
+  height: 5.5rem;
+  width: 100%;
 }
 
 button img {
-  height: 200px;
+  border: none;
+  height: 4rem;
+  margin: 0 1rem;
+}
+
+div#listening {
+  display: none;
+  position: fixed;
+  align-items: center;
+  background-color: #1d2324;
+  height: 4em;
+  width: 100vw;
+  bottom: 0;
+  z-index: 1;
+}
+
+div#listening img {
+  height: 100%;
+}
+
+div#listening p {
+  margin: 0 10px;
 }
 
 footer {
-  display: flex;
-  background-color: #25285f;
-  justify-content: center;
-  align-items: center;
-  height: 9vh;
-  margin: 10px 0 0;
+  background-color: #000000;
+  height: auto;
   width: 100%;
+  left: 0;
   bottom: 0;
 }
 
-@media(min-width: 900px) {
-  div#container {
-    margin: 0 0 0 90px;
-  }
-  button {
-    margin: 20px 10px 20px 50px;
-    height: 200px;
-    width: 200px;
-  }
-  button img {
-    height: 100px;
-  }
+footer main {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer main h2 {
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+}
+
+div#listening.active{
+  display: flex;
+}
+img.active{
+  border: 1px solid yellow;
+  border-radius: 1px;
+}
+footer.active{
+  height: 150px;
 }
