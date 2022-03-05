@@ -1,6 +1,7 @@
 const buttons = document.querySelectorAll('button');
 let images = document.querySelectorAll("img");
 let nomes = document.querySelectorAll("p");
+let listening = document.querySelector("div#listening");
 
 const musics = [{
   img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOOCXhI9T4YdreEByvjrCpvPsigy-H-ZTtCA&usqp=CAU",
@@ -31,10 +32,35 @@ const musics = [{
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFgszZJTMgXz73HdUokiP8_MWoud1qkLyiPw&usqp=CAU",
     nome: "All Alone",
     music: ""
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxSU-kSsidJGBmtUEyBP2eTAw5A71dpmnEEw&usqp=CAU",
+    nome: "INCOMING",
+    music: ""
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZMFd_ixOGlSgf-oZ0ZXrUKkLUyTdzpIWvZw&usqp=CAU",
+    nome: "S.X.N.D. N.X.D.E.S.",
+    music: ""
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBVeB4YIIImzfVeFQWcmRuYng19qy9Php3Ag&usqp=CAU",
+    nome: "Override",
+    music: ""
   }];
 
 musics.forEach((music, index) => {
-  images[index].src = music.img
-});
+  let footer = document.querySelector("footer");
+  let imageSelect = document.querySelector("img#imageSelect");
+  let titulo = document.querySelector("p#titulo");
+  buttons[index].addEventListener('click', () => {
+    images[index].classList.add('active');
+    listening.classList.add('active');
+    footer.classList.add('active');
+    imageSelect.src = (music.img);
+    titulo.innerText = (music.nome);
+  });
 
-console.log(images.length, musics.length)
+  images[index].src = (music.img);
+  nomes[index].innerText = (music.nome);
+});
