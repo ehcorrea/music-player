@@ -48,11 +48,6 @@ const musics = [{
     nome: "Override",
     music: "assets/music/Override.mp3"
   }];
-let indexMusica = 0;
-
-listening.addEventListener('click', () => {
-    console.log('click')
-  });
   
 musics.forEach((music, index) => {
   let footer = document.querySelector("footer");
