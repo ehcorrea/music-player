@@ -1,7 +1,6 @@
 const buttons = document.querySelectorAll('button');
 let images = document.querySelectorAll("img");
 let nomes = document.querySelectorAll("p");
-let listening = document.querySelector("div#listening");
 
 const musics = [{
   img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOOCXhI9T4YdreEByvjrCpvPsigy-H-ZTtCA&usqp=CAU",
@@ -48,14 +47,22 @@ const musics = [{
     nome: "Override",
     music: "assets/music/Override.mp3"
   }];
-  
+
 musics.forEach((music, index) => {
-  let footer = document.querySelector("footer");
+  let listening = document.querySelector("div#listening");
+  let seekbar = document.querySelector("input");
   let imageSelect = document.querySelector("img#imageSelect");
   let titulo = document.querySelector("p#titulo");
+  let footer = document.querySelector("footer");
   const audio = new Audio(music.music);
-  
+
   buttons[index].addEventListener('click', () => {
+    audio.addEventListener('timeupdate', () => {
+      seekbar.value = parseInt((audio.currentTime/audio.duration)*100);
+    });
+    seekbar.addEventListener('change', () => {
+      audio.currentTime = seekbar.value*audio.duration/100;
+    });
     audio.play()
     images[index].classList.add('active');
     footer.classList.add('active');
