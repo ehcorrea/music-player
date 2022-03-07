@@ -1,6 +1,9 @@
-const buttons = document.querySelectorAll('button');
-let images = document.querySelectorAll("img");
+let listeningmusic = document.querySelector("div#listeningmusic");
+let container = document.querySelector('div#container');
+const buttons = document.querySelectorAll('button.music');
+let images = document.querySelectorAll("img.img");
 let nomes = document.querySelectorAll("p");
+let footer = document.querySelector("footer");
 
 const musics = [{
   img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOOCXhI9T4YdreEByvjrCpvPsigy-H-ZTtCA&usqp=CAU",
@@ -51,10 +54,11 @@ const musics = [{
 musics.forEach((music, index) => {
   let listening = document.querySelector("div#listening");
   let seekbar = document.querySelector("input");
-  let imageSelect = document.querySelector("img#imageSelect");
-  let titulo = document.querySelector("p#titulo");
-  let footer = document.querySelector("footer");
+  let x = document.querySelector("button#x");
+  let imageSelect = document.querySelectorAll("img.imageSelect");
+  let titulo = document.querySelectorAll("p.titulo");
   const audio = new Audio(music.music);
+
 
   buttons[index].addEventListener('click', () => {
     audio.addEventListener('timeupdate', () => {
@@ -66,10 +70,27 @@ musics.forEach((music, index) => {
     audio.play()
     images[index].classList.add('active');
     footer.classList.add('active');
+    listeningmusic.classList.add('active');
+    container.classList.add('active');
     listening.classList.add('active');
-    imageSelect.src = (music.img);
-    titulo.innerText = (music.nome);
+    for (let i = 0; i < imageSelect.length; i++) {
+      imageSelect[i].src = (music.img);
+    }
+    for (let i = 0; i < titulo.length; i++) {
+      titulo[i].innerText = (music.nome);
+    }
+  listening.addEventListener('click', () => {
+    audio.play()
+    listeningmusic.classList.add('active');
+    container.classList.add('active');
+    //listening.classList.add('active');
+  })
   });
+  x.addEventListener('click', () => {
+      audio.pause()
+      listeningmusic.classList.remove('active');
+      container.classList.remove('active');
+    })
   images[index].src = (music.img);
   nomes[index].innerText = (music.nome);
 });
