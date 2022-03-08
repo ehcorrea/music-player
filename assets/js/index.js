@@ -1,12 +1,13 @@
+let count = 0;
 let containermusic = document.querySelector('div#containermusic');
 let container = document.querySelector('div#container');
 const buttons = document.querySelectorAll('button.music');
 let images = document.querySelectorAll("img.img");
 let nomes = document.querySelectorAll("p");
-let footer = document.querySelector("footer");
+let listening = document.querySelector("div#listening");
 let seekbar = document.querySelector("input");
 let imageSelect = document.querySelector("img.imageSelect");
-let listening = document.querySelector("div#listening");
+let footer = document.querySelector("footer");
 
 const musics = [{
   img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOOCXhI9T4YdreEByvjrCpvPsigy-H-ZTtCA&usqp=CAU",
@@ -56,7 +57,6 @@ const musics = [{
 
 
 musics.forEach((music, index) => {
-  let count = 0;
   let x = document.querySelector("button#x");
   let titulo = document.querySelectorAll("p.titulo");
   const audio = new Audio(music.music);
@@ -96,10 +96,7 @@ musics.forEach((music, index) => {
 
 let listeningg = listening.addEventListener('click', () => {
   containermusic.style.display = "flex";
-  let list = listening.style.display = "flex";
-  if (list == false) {
-    console.log('test')
-  }
+  listening.style.display = "flex";
 });
 
 let xButton = x.addEventListener('click',
