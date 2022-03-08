@@ -1,9 +1,12 @@
-let listeningmusic = document.querySelector("div#listeningmusic");
+let containermusic = document.querySelector('div#containermusic');
 let container = document.querySelector('div#container');
 const buttons = document.querySelectorAll('button.music');
 let images = document.querySelectorAll("img.img");
 let nomes = document.querySelectorAll("p");
 let footer = document.querySelector("footer");
+let seekbar = document.querySelector("input");
+let imageSelect = document.querySelector("img.imageSelect");
+let listening = document.querySelector("div#listening");
 
 const musics = [{
   img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOOCXhI9T4YdreEByvjrCpvPsigy-H-ZTtCA&usqp=CAU",
@@ -51,14 +54,11 @@ const musics = [{
     music: "assets/music/Override.mp3"
   }];
 
+
 musics.forEach((music, index) => {
-  let listening = document.querySelector("div#listening");
-  let seekbar = document.querySelector("input");
   let x = document.querySelector("button#x");
-  let imageSelect = document.querySelectorAll("img.imageSelect");
   let titulo = document.querySelectorAll("p.titulo");
   const audio = new Audio(music.music);
-
 
   buttons[index].addEventListener('click', () => {
     audio.addEventListener('timeupdate', () => {
@@ -69,28 +69,37 @@ musics.forEach((music, index) => {
     });
     audio.play()
     images[index].classList.add('active');
-    footer.classList.add('active');
-    listeningmusic.classList.add('active');
-    container.classList.add('active');
+    seekbar.classList.add('active');
     listening.classList.add('active');
-    for (let i = 0; i < imageSelect.length; i++) {
-      imageSelect[i].src = (music.img);
-    }
+    container.classList.add('active');
+    imageSelect.classList.remove('active');
+    footer.classList.add('active');
+    containermusic.style.display = "none"
+    imageSelect.src = (music.img);
+    x.style.display = "block";
     for (let i = 0; i < titulo.length; i++) {
       titulo[i].innerText = (music.nome);
-    }
-  listening.addEventListener('click', () => {
-    audio.play()
-    listeningmusic.classList.add('active');
-    container.classList.add('active');
-    //listening.classList.add('active');
-  })
+    };
+    listeningg
+    xButton
   });
-  x.addEventListener('click', () => {
-      audio.pause()
-      listeningmusic.classList.remove('active');
-      container.classList.remove('active');
-    })
   images[index].src = (music.img);
   nomes[index].innerText = (music.nome);
 });
+
+let listeningg = listening.addEventListener('click', () => {
+  containermusic.style.display = "flex";
+  let list = listening.style.display = "flex";
+  if (list == 'flex') {
+    console.log('test')
+  }
+});
+
+let xButton = x.addEventListener('click',
+  () => {
+    x.style.display = "none";
+    seekbar.classList.remove('active');
+    listening.classList.remove('active');
+    imageSelect.classList.add('active');
+    containermusic.style.display = "flex";
+  });
