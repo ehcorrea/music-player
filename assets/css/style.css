@@ -10,46 +10,8 @@ body {
   color: white;
 }
 
-div#listeningmusic.active {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: auto;
-  width: 100%;
-}
-
-div#listeningmusic {
-  display: none;
-}
-
-div#listeningmusic button,div#listeningmusic button img {
-  width: 25px;
-  height: 25px;
-  margin: 10px 0 10px 0;
-}
-div#listeningmusic img.imageSelect {
-  height: 20em;
-  margin: 0 0 30px 0;
-}
-
-div#listeningmusic input {
-  height: 3px;
-  width: 20rem;
-  margin: 450px 0 0 0;
-}
-
-div#listeningmusic input::-webkit-slider-thumb {
-  box-shadow: -100px 0 0 100px green;
-}
-
-div#listeningmusic p {
-  white-space: nowrap;
-  text-align: center;
-}
-
-div#container.active{
-  display: none;
+div#container.active {
+  z-index: 0;
 }
 
 div#list ul li {
@@ -83,8 +45,7 @@ button {
   width: 100%;
 }
 
-button img {
-  border: none;
+div#containermusic button img {
   height: 4rem;
   margin: 0 1rem;
 }
@@ -97,7 +58,12 @@ div#listening {
   height: 4em;
   width: 100%;
   bottom: 0;
-  z-index: 1;
+  z-index: 2;
+}
+
+input.active {
+  margin: 30rem 0 0 0;
+  width: 20rem;
 }
 
 input {
@@ -112,17 +78,49 @@ input {
 
 input::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 1px;
+  width: 3px;
   cursor: pointer;
   box-shadow: -400px 0 0 400px green;
 }
 
-div#listening img {
-  height: 100%;
+div#listening button img {
+  height: 25px;
 }
 
 div#listening p {
-  margin: 0 10px;
+  margin: 0 0 0 10px;
+}
+
+div#listening.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  height: 100%;
+  padding: 20px;
+}
+
+div#listening button {
+  width: 25px;
+  height: 25px;
+  margin: 10px 0 10px -295px;
+}
+
+div#listening img.imageSelect.active {
+  height: 4em;
+  margin: 0 0 0 0;
+  border: none;
+}
+
+div#listening img.imageSelect {
+  height: 20em;
+  margin: 0 0 30px 0;
+}
+
+div#listening p {
+  white-space: nowrap;
+  text-align: center;
 }
 
 footer {
@@ -146,9 +144,6 @@ footer main h2 {
   text-align: center;
 }
 
-div#listening.active {
-  display: flex;
-}
 img.active {
   border: 1px solid yellow;
   border-radius: 1px;
