@@ -56,6 +56,7 @@ const musics = [{
 
 
 musics.forEach((music, index) => {
+  let count = 0;
   let x = document.querySelector("button#x");
   let titulo = document.querySelectorAll("p.titulo");
   const audio = new Audio(music.music);
@@ -67,7 +68,13 @@ musics.forEach((music, index) => {
     seekbar.addEventListener('change', () => {
       audio.currentTime = seekbar.value*audio.duration/100;
     });
-    audio.play()
+    if (count == 0 ) {
+      count = 1;
+      audio.play()
+    } else{
+      count = 0;
+      audio.pause()
+    }
     images[index].classList.add('active');
     seekbar.classList.add('active');
     listening.classList.add('active');
@@ -90,7 +97,7 @@ musics.forEach((music, index) => {
 let listeningg = listening.addEventListener('click', () => {
   containermusic.style.display = "flex";
   let list = listening.style.display = "flex";
-  if (list == 'flex') {
+  if (list == false) {
     console.log('test')
   }
 });
