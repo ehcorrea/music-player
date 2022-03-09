@@ -1,11 +1,13 @@
 let count = 0;
 let containermusic = document.querySelector('div#containermusic');
-let container = document.querySelector('div#container');
 const buttons = document.querySelectorAll('button.music');
 let images = document.querySelectorAll("img.img");
 let nomes = document.querySelectorAll("p");
 let listening = document.querySelector("div#listening");
 let seekbar = document.querySelector("input");
+let buttonsIcons = document.querySelector("#buttonsIcons");
+let back = document.querySelector("#back");
+let next = document.querySelector("#next");
 let imageSelect = document.querySelector("img.imageSelect");
 let footer = document.querySelector("footer");
 
@@ -68,21 +70,21 @@ musics.forEach((music, index) => {
     seekbar.addEventListener('change', () => {
       audio.currentTime = seekbar.value*audio.duration/100;
     });
-    if (count == 0 ) {
+    if (count == 0) {
       count = 1;
-      audio.play()
-    } else{
+      audio.play();
+    } else {
       count = 0;
-      audio.pause()
-    }
-    images[index].classList.add('active');
+      audio.pause();
+    };
+    images[index].classList.toggle('active');
     seekbar.classList.add('active');
     listening.classList.add('active');
-    container.classList.add('active');
     imageSelect.classList.remove('active');
     footer.classList.add('active');
-    containermusic.style.display = "none"
+    containermusic.style.display = "none";
     imageSelect.src = (music.img);
+    buttonsIcons.style.display = "flex";
     x.style.display = "block";
     for (let i = 0; i < titulo.length; i++) {
       titulo[i].innerText = (music.nome);
@@ -101,6 +103,7 @@ let listeningg = listening.addEventListener('click', () => {
 
 let xButton = x.addEventListener('click',
   () => {
+    buttonsIcons.style.display = "none";
     x.style.display = "none";
     seekbar.classList.remove('active');
     listening.classList.remove('active');
