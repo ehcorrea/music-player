@@ -1,4 +1,3 @@
-let count = 0;
 let containermusic = document.querySelector('div#containermusic');
 const buttons = document.querySelectorAll('button.music');
 let images = document.querySelectorAll("img.img");
