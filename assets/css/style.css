@@ -98,12 +98,11 @@ div#listening button#x {
 div#listening img.imageSelect.active {
   height: 4em;
   margin: 0;
-  border: none;
 }
 
 div#listening img.imageSelect {
   height: 50vh;
-  margin: 0 0 27px 0;
+  margin: 0 0 5vh 0;
 }
 
 div#listening p {
@@ -111,16 +110,15 @@ div#listening p {
   text-align: center;
 }
 
-div#buttonsIcons {
+div#buttonsControlls {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 1.8rem 0;
-  height: 3rem;
+  height: 5rem;
   width: 20.4rem;
 }
 
-div#buttonsIcons button {
+div#buttonsControlls button {
   display: flex;
   background: none;
   align-items: center;
@@ -150,10 +148,6 @@ footer main h2 {
   text-align: center;
 }
 
-img.active {
-  border: 1px solid yellow;
-  border-radius: 1px;
-}
 footer.active {
   height: 150px;
 }
@@ -163,10 +157,11 @@ footer.active {
     margin: 10px 0 10px -250px;
   }
   input.active {
-    margin: 25rem 0 0 0;
+    margin: 23.7rem 0 0 0;
     width: 18rem;
   }
   div#listening img.imageSelect {
     height: 18em;
+    margin: 0 0 1rem 0;
   }
 }
