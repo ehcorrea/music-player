@@ -110,6 +110,14 @@ div#listening p {
   text-align: center;
 }
 
+div#listening ul {
+  display: flex;
+  margin: -.4rem 0 0 0;
+  justify-content: space-between;
+  width: 50vh;
+  list-style-type: none;
+}
+
 div#buttonsControlls {
   display: flex;
   align-items: center;
@@ -163,5 +171,8 @@ footer.active {
   div#listening img.imageSelect {
     height: 18em;
     margin: 0 0 1rem 0;
+  }
+  div#listening ul {
+    width: 18rem;
   }
 }
