@@ -7,9 +7,11 @@ let listening = document.querySelector("div#listening");
 let seekbar = document.querySelector("input");
 let buttonsIcons = document.querySelector("#buttonsIcons");
 let back = document.querySelector("#back");
+let stop = document.querySelector("#stop");
 let next = document.querySelector("#next");
 let imageSelect = document.querySelector("img.imageSelect");
 let footer = document.querySelector("footer");
+stop.src = "assets/img/break.png"
 
 const musics = [{
   img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOOCXhI9T4YdreEByvjrCpvPsigy-H-ZTtCA&usqp=CAU",
@@ -57,6 +59,7 @@ const musics = [{
     music: "assets/music/Override.mp3"
   }];
 
+let StopIndex = 0;
 
 musics.forEach((music, index) => {
   let x = document.querySelector("button#x");
@@ -64,19 +67,27 @@ musics.forEach((music, index) => {
   const audio = new Audio(music.music);
 
   buttons[index].addEventListener('click', () => {
+    stop.addEventListener('click',
+      () => {
+        StopIndex++
+        if (StopIndex > 1) {
+          stop.src = "assets/img/break.png"
+          audio.play()
+          StopIndex = 0
+        } else {
+          audio.pause()
+          stop.src = "assets/img/button_play.png"
+        }
+        console.log(StopIndex)
+      });
     audio.addEventListener('timeupdate', () => {
       seekbar.value = parseInt((audio.currentTime/audio.duration)*100);
     });
     seekbar.addEventListener('change', () => {
       audio.currentTime = seekbar.value*audio.duration/100;
     });
-    if (count == 0) {
-      count = 1;
-      audio.play();
-    } else {
-      count = 0;
-      audio.pause();
-    };
+    audio.play();
+
     images[index].classList.toggle('active');
     seekbar.classList.add('active');
     listening.classList.add('active');
