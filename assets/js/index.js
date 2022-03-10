@@ -5,13 +5,12 @@ let images = document.querySelectorAll("img.img");
 let nomes = document.querySelectorAll("p");
 let listening = document.querySelector("div#listening");
 let seekbar = document.querySelector("input");
-let buttonsIcons = document.querySelector("#buttonsIcons");
+let buttonsControlls = document.querySelector("#buttonsControlls");
 let back = document.querySelector("#back");
 let stop = document.querySelector("#stop");
 let next = document.querySelector("#next");
 let imageSelect = document.querySelector("img.imageSelect");
 let footer = document.querySelector("footer");
-stop.src = "assets/img/break.png"
 
 const musics = [{
   img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOOCXhI9T4YdreEByvjrCpvPsigy-H-ZTtCA&usqp=CAU",
@@ -59,65 +58,104 @@ const musics = [{
     music: "assets/music/Override.mp3"
   }];
 
+let index = 0;
 let StopIndex = 0;
+let songIndex = 2;
+let playing = true;
 
 musics.forEach((music, index) => {
-  let x = document.querySelector("button#x");
-  let titulo = document.querySelectorAll("p.titulo");
   const audio = new Audio(music.music);
 
-  buttons[index].addEventListener('click', () => {
-    stop.addEventListener('click',
-      () => {
-        StopIndex++
-        if (StopIndex > 1) {
-          stop.src = "assets/img/break.png"
-          audio.play()
-          StopIndex = 0
-        } else {
-          audio.pause()
-          stop.src = "assets/img/button_play.png"
-        }
-        console.log(StopIndex)
-      });
-    audio.addEventListener('timeupdate', () => {
-      seekbar.value = parseInt((audio.currentTime/audio.duration)*100);
-    });
-    seekbar.addEventListener('change', () => {
-      audio.currentTime = seekbar.value*audio.duration/100;
-    });
-    audio.play();
+  let x = document.querySelector("button#x");
+  let titulo = document.querySelectorAll("p.titulo");
 
-    images[index].classList.add('active');
-    seekbar.classList.add('active');
-    listening.classList.add('active');
-    imageSelect.classList.remove('active');
-    footer.classList.add('active');
-    containermusic.style.display = "none";
-    imageSelect.src = (music.img);
-    buttonsIcons.style.display = "flex";
-    x.style.display = "block";
-    for (let i = 0; i < titulo.length; i++) {
-      titulo[i].innerText = (music.nome);
-    };
-    listeningg
-    xButton
-  });
   images[index].src = (music.img);
   nomes[index].innerText = (music.nome);
+
+  buttons[index].addEventListener('click',
+    () => {
+      audio.play()
+      stop.addEventListener('click',
+        () => {
+          if (playing) {
+            audio.play();
+            stop.src = "assets/img/break.png"
+            playing = false;
+          } else {
+            stop.src = "./assets/img/button_play.png"
+            audio.pause();
+            playing = true;
+          };
+        });
+
+      back.addEventListener('click',
+        () => {
+          console.log('voltar')
+          songIndex--;
+          if (songIndex < 0) {
+            songIndex = 1;
+          };
+          audio.src = (music.music);
+          imageSelect.src = (music.img);
+          titulo.innerText = (music.nome);
+
+          playing = true;
+          playPause();
+        })
+
+      next.addEventListener('click',
+        () => {
+          console.log('prox')
+          songIndex++;
+          if (songIndex > 1) {
+            songIndex = 0;
+          };
+          audio.src = (music.music);
+          imageSelect.src = (music.img);
+          titulo.innerText = (music.nome);
+          playing = true;
+          playPause();
+        });
+
+      audio.addEventListener('timeupdate',
+        () => {
+          seekbar.value = parseInt((audio.currentTime/audio.duration)*100);
+        });
+      seekbar.addEventListener('change',
+        () => {
+          audio.currentTime = seekbar.value*audio.duration/100;
+        });
+      seekbar.classList.add('active');
+      listening.classList.add('active');
+      imageSelect.classList.remove('active');
+      footer.classList.add('active');
+      containermusic.style.display = "none";
+      buttonsControlls.style.display = "flex";
+      x.style.display = "block";
+      imageSelect.src = (music.img);
+      for (let i = 0; i < titulo.length; i++) {
+        titulo[i].innerText = (music.nome);
+      };
+      Listening()
+      xButton()
+    });
 });
 
-let listeningg = listening.addEventListener('click', () => {
-  containermusic.style.display = "flex";
-  listening.style.display = "flex";
-});
-
-let xButton = x.addEventListener('click',
-  () => {
-    buttonsIcons.style.display = "none";
-    x.style.display = "none";
-    seekbar.classList.remove('active');
-    listening.classList.remove('active');
-    imageSelect.classList.add('active');
+function Listening() {
+  listening.addEventListener('click', () => {
     containermusic.style.display = "flex";
+    listening.style.display = "flex";
   });
+}
+
+function xButton() {
+  x.addEventListener('click',
+    () => {
+      buttonsControlls.style.display = "none";
+      x.style.display = "none";
+      seekbar.classList.remove('active');
+      listening.classList.remove('active');
+      imageSelect.classList.add('active');
+      containermusic.style.display = "flex";
+    });
+}
