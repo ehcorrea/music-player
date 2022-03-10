@@ -5,9 +5,7 @@ let nomes = document.querySelectorAll("p");
 let listening = document.querySelector("div#listening");
 let seekbar = document.querySelector("input");
 let buttonsControlls = document.querySelector("#buttonsControlls");
-let back = document.querySelector("#back");
 let stop = document.querySelector("#stop");
-let next = document.querySelector("#next");
 let imageSelect = document.querySelector("img.imageSelect");
 let footer = document.querySelector("footer");
 
@@ -85,35 +83,6 @@ musics.forEach((music, index) => {
             audio.pause();
             playing = true;
           };
-        });
-
-      back.addEventListener('click',
-        () => {
-          console.log('voltar')
-          songIndex--;
-          if (songIndex < 0) {
-            songIndex = 1;
-          };
-          audio.src = (music.music);
-          imageSelect.src = (music.img);
-          titulo.innerText = (music.nome);
-
-          playing = true;
-          playPause();
-        })
-
-      next.addEventListener('click',
-        () => {
-          console.log('prox')
-          songIndex++;
-          if (songIndex > 1) {
-            songIndex = 0;
-          };
-          audio.src = (music.music);
-          imageSelect.src = (music.img);
-          titulo.innerText = (music.nome);
-          playing = true;
-          playPause();
         });
 
       audio.addEventListener('timeupdate',
