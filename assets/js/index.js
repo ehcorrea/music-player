@@ -88,7 +88,7 @@ musics.forEach((music, index) => {
     });
     audio.play();
 
-    images[index].classList.toggle('active');
+    images[index].classList.add('active');
     seekbar.classList.add('active');
     listening.classList.add('active');
     imageSelect.classList.remove('active');
