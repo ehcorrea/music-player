@@ -90,6 +90,7 @@ div#listening.active {
 }
 
 div#listening button#x {
+  background: none;
   width: 25px;
   height: 25px;
   margin: 5vh 0 2vh -45vh;
