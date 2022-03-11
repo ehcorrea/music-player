@@ -4,9 +4,11 @@ let images = document.querySelectorAll("img.img");
 let nomes = document.querySelectorAll("p");
 let listening = document.querySelector("div#listening");
 let seekbar = document.querySelector("input");
+let time_container = document.querySelector("#time_container");
 let buttonsControlls = document.querySelector("#buttonsControlls");
 let stop = document.querySelector("#stop");
 let imageSelect = document.querySelector("img.imageSelect");
+let duracaoMusica = document.querySelector('#durationTime');
 let footer = document.querySelector("footer");
 
 const musics = [{
@@ -54,24 +56,31 @@ const musics = [{
     nome: "Override",
     music: "assets/music/Override.mp3"
   }];
-
-let index = 0;
-let StopIndex = 0;
-let songIndex = 2;
+  
 let playing = true;
 
 musics.forEach((music, index) => {
   const audio = new Audio(music.music);
-
   let x = document.querySelector("button#x");
   let titulo = document.querySelectorAll("p.titulo");
 
   images[index].src = (music.img);
   nomes[index].innerText = (music.nome);
 
+  function segundosParaMinutos(segundos) {
+    let campoMinutos = Math.floor(segundos / 60);
+    let campoSegundos = segundos % 60;
+    if (campoSegundos < 10) {
+      campoSegundos = '0' + campoSegundos;
+    }
+    return campoMinutos+':'+campoSegundos;
+  }
+
   buttons[index].addEventListener('click',
     () => {
       audio.play()
+      duracaoMusica.textContent = segundosParaMinutos(Math.floor(audio.duration));
+      
       stop.addEventListener('click',
         () => {
           if (playing) {
@@ -88,6 +97,8 @@ musics.forEach((music, index) => {
       audio.addEventListener('timeupdate',
         () => {
           seekbar.value = parseInt((audio.currentTime/audio.duration)*100);
+          let tempoDecorrido = document.querySelector('#currentTime');
+          tempoDecorrido.textContent = segundosParaMinutos(Math.floor(audio.currentTime));
         });
       seekbar.addEventListener('change',
         () => {
@@ -98,6 +109,7 @@ musics.forEach((music, index) => {
       imageSelect.classList.remove('active');
       footer.classList.add('active');
       containermusic.style.display = "none";
+      time_container.style.display = "flex";
       buttonsControlls.style.display = "flex";
       x.style.display = "block";
       imageSelect.src = (music.img);
@@ -119,6 +131,7 @@ function Listening() {
 function xButton() {
   x.addEventListener('click',
     () => {
+      time_container.style.display = "none";
       buttonsControlls.style.display = "none";
       x.style.display = "none";
       seekbar.classList.remove('active');
