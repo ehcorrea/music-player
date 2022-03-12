@@ -57,13 +57,11 @@ const musics = [{
     music: "assets/music/Override.mp3"
   }];
 
-
 let playing = true;
 
 musics.forEach((music, index) => {
   const audio = new Audio(music.music);
   let down_arrow = document.querySelector("button#down_arrow");
-  let x = document.querySelector("button#x");
   let titulo = document.querySelectorAll("p.titulo");
 
   images[index].src = (music.img);
@@ -115,7 +113,6 @@ musics.forEach((music, index) => {
       containermusic.style.display = "none";
       time_container.style.display = "flex";
       buttonsControlls.style.display = "flex";
-      x.style.display = "block";
       down_arrow.style.display = "block";
       down_arrow.classList.remove('active');
       imageSelect.src = (music.img);
@@ -123,7 +120,6 @@ musics.forEach((music, index) => {
         titulo[i].innerText = (music.nome);
       };
       Listening()
-      xButton()
       DownButton()
     });
 });
@@ -135,20 +131,6 @@ function Listening() {
   });
 }
 
-function xButton() {
-  x.addEventListener('click',
-    () => {
-      time_container.style.display = "none";
-      buttonsControlls.style.display = "none";
-      x.style.display = "none";
-      down_arrow.classList.add('active');
-      seekbar.classList.remove('active');
-      listening.classList.remove('active');
-      imageSelect.classList.add('active');
-      containermusic.style.display = "flex";
-    });
-}
-
 function DownButton() {
   let downArrow = true;
   down_arrow.addEventListener('click',
@@ -156,7 +138,6 @@ function DownButton() {
       if (downArrow) {
         time_container.style.display = "none";
         buttonsControlls.style.display = "none";
-        x.style.display = "none";
         down_arrow.style.display = "flex";
         down_arrow.classList.add('active');
         seekbar.classList.remove('active');
@@ -167,7 +148,6 @@ function DownButton() {
       } else {
         time_container.style.display = "flex";
         buttonsControlls.style.display = "flex";
-        x.style.display = "block";
         down_arrow.style.display = "block";
         down_arrow.classList.remove('active');
         seekbar.classList.add('active');
