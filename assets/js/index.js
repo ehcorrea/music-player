@@ -56,11 +56,13 @@ const musics = [{
     nome: "Override",
     music: "assets/music/Override.mp3"
   }];
-  
+
+
 let playing = true;
 
 musics.forEach((music, index) => {
   const audio = new Audio(music.music);
+  let down_arrow = document.querySelector("button#down_arrow");
   let x = document.querySelector("button#x");
   let titulo = document.querySelectorAll("p.titulo");
 
@@ -80,7 +82,7 @@ musics.forEach((music, index) => {
     () => {
       audio.play()
       duracaoMusica.textContent = segundosParaMinutos(Math.floor(audio.duration));
-      
+
       stop.addEventListener('click',
         () => {
           if (playing) {
@@ -100,10 +102,12 @@ musics.forEach((music, index) => {
           let tempoDecorrido = document.querySelector('#currentTime');
           tempoDecorrido.textContent = segundosParaMinutos(Math.floor(audio.currentTime));
         });
+
       seekbar.addEventListener('change',
         () => {
           audio.currentTime = seekbar.value*audio.duration/100;
         });
+
       seekbar.classList.add('active');
       listening.classList.add('active');
       imageSelect.classList.remove('active');
@@ -112,12 +116,15 @@ musics.forEach((music, index) => {
       time_container.style.display = "flex";
       buttonsControlls.style.display = "flex";
       x.style.display = "block";
+      down_arrow.style.display = "block";
+      down_arrow.classList.remove('active');
       imageSelect.src = (music.img);
       for (let i = 0; i < titulo.length; i++) {
         titulo[i].innerText = (music.nome);
       };
       Listening()
       xButton()
+      DownButton()
     });
 });
 
@@ -134,9 +141,40 @@ function xButton() {
       time_container.style.display = "none";
       buttonsControlls.style.display = "none";
       x.style.display = "none";
+      down_arrow.classList.add('active');
       seekbar.classList.remove('active');
       listening.classList.remove('active');
       imageSelect.classList.add('active');
       containermusic.style.display = "flex";
+    });
+}
+
+function DownButton() {
+  let downArrow = true;
+  down_arrow.addEventListener('click',
+    () => {
+      if (downArrow) {
+        time_container.style.display = "none";
+        buttonsControlls.style.display = "none";
+        x.style.display = "none";
+        down_arrow.style.display = "flex";
+        down_arrow.classList.add('active');
+        seekbar.classList.remove('active');
+        listening.classList.remove('active');
+        imageSelect.classList.add('active');
+        containermusic.style.display = "flex";
+        downArrow = false;
+      } else {
+        time_container.style.display = "flex";
+        buttonsControlls.style.display = "flex";
+        x.style.display = "block";
+        down_arrow.style.display = "block";
+        down_arrow.classList.remove('active');
+        seekbar.classList.add('active');
+        listening.classList.add('active');
+        imageSelect.classList.remove('active');
+        containermusic.style.display = "block";
+        downArrow = true;
+      }
     });
 }
