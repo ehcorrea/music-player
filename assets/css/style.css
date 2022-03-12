@@ -58,7 +58,7 @@ div#listening {
 }
 
 input.active {
-  margin: 70vh 0 0 0;
+  margin: 68vh 0 0 0;
   width: 49vh;
 }
 
@@ -89,13 +89,6 @@ div#listening.active {
   height: 100%;
 }
 
-div#listening button#x {
-  background: none;
-  width: 25px;
-  height: 25px;
-  margin: 5vh 0 2vh -45vh;
-}
-
 div#listening img.imageSelect.active {
   height: 4em;
   margin: 0;
@@ -103,7 +96,7 @@ div#listening img.imageSelect.active {
 
 div#listening img.imageSelect {
   height: 50vh;
-  margin: 0 0 3vh 0;
+  margin: 8vh 0 3vh 0;
 }
 
 div#listening p {
@@ -137,14 +130,15 @@ div#buttonsControlls button {
 }
 
 button#down_arrow {
+  position: absolute;
   background: none;
   height: 1.8rem;
   width: 1.8rem;
-  margin: -33.8rem -18rem 0 0;
+  margin: 4% -75% 0 0;
 }
 
 button#down_arrow.active {
-  margin: 0 0 0 56%;
+  margin: 0 0 0 90%;
   transform: rotate(180deg);
 }
 
@@ -174,25 +168,19 @@ footer.active {
 }
 
 @media(min-width: 900px) {
-  div#listening button#x {
-    margin: 10px 0 10px -250px;
-  }
   input.active {
-    margin: 23.7rem 0 0 0;
+    margin: 24rem 0 0 0;
     width: 18rem;
   }
   div#listening img.imageSelect {
     height: 18em;
-    margin: 0 0 .8rem 0;
+    margin: 2.5rem 0 1rem 0;
   }
   div#listening ul {
     margin: -.6rem 0 0 0;
     width: 18rem;
   }
   button#down_arrow {
-    margin: -28.5rem -15rem 0 0;
-  }
-  button#down_arrow.active {
-    margin: 0 0 0 84%;
+    margin: .4rem -15rem 0 0;
   }
 }
