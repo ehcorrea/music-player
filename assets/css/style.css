@@ -58,7 +58,7 @@ div#listening {
 }
 
 input.active {
-  margin: 68vh 0 0 0;
+  margin: 66vh 0 0 0;
   width: 49vh;
 }
 
@@ -87,7 +87,7 @@ button#down_arrow {
   background: none;
   height: 2rem;
   width: 1.8rem;
-  margin: 1rem -40vh 0 0;
+  margin: .5rem -40vh .3rem 0;
 }
 
 button#down_arrow.active {
