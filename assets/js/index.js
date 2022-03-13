@@ -87,12 +87,10 @@ musics.forEach((music, index) => {
             audio.play();
             stop.src = "assets/img/break.png"
             playing = false;
-            console.log('a')
           } else {
             stop.src = "./assets/img/button_play.png"
             audio.pause();
             playing = true;
-            console.log('b')
           };
         });
 
