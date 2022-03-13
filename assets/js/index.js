@@ -153,7 +153,7 @@ function DownButton() {
         seekbar.classList.add('active');
         listening.classList.add('active');
         imageSelect.classList.remove('active');
-        containermusic.style.display = "block";
+        containermusic.style.display = "none";
         downArrow = true;
       }
     });
