@@ -57,7 +57,7 @@ const musics = [{
     music: "assets/music/Override.mp3"
   }];
 
-let playing = true;
+let playing = false;
 
 musics.forEach((music, index) => {
   const audio = new Audio(music.music);
@@ -87,10 +87,12 @@ musics.forEach((music, index) => {
             audio.play();
             stop.src = "assets/img/break.png"
             playing = false;
+            console.log('a')
           } else {
             stop.src = "./assets/img/button_play.png"
             audio.pause();
             playing = true;
+            console.log('b')
           };
         });
 
@@ -127,6 +129,7 @@ function DownButton() {
   let downArrow = true;
   down_arrow.addEventListener('click',
     () => {
+
       if (downArrow) {
         time_container.style.display = "none";
         buttonsControlls.style.display = "none";
