@@ -119,17 +119,9 @@ musics.forEach((music, index) => {
       for (let i = 0; i < titulo.length; i++) {
         titulo[i].innerText = (music.nome);
       };
-      Listening()
       DownButton()
     });
 });
-
-function Listening() {
-  listening.addEventListener('click', () => {
-    containermusic.style.display = "flex";
-    listening.style.display = "flex";
-  });
-}
 
 function DownButton() {
   let downArrow = true;
@@ -142,6 +134,7 @@ function DownButton() {
         down_arrow.classList.add('active');
         seekbar.classList.remove('active');
         listening.classList.remove('active');
+        listening.style.display = "flex";
         imageSelect.classList.add('active');
         containermusic.style.display = "flex";
         downArrow = false;
