@@ -4,6 +4,8 @@ let images = document.querySelectorAll("img.img");
 let nomes = document.querySelectorAll("p");
 let listening = document.querySelector("div#listening");
 let seekbar = document.querySelector("input");
+let down_arrow = document.querySelector("button#down_arrow");
+let titulo = document.querySelectorAll("p.titulo");
 let time_container = document.querySelector("#time_container");
 let buttonsControlls = document.querySelector("#buttonsControlls");
 let stop = document.querySelector("#stop");
@@ -59,69 +61,66 @@ const musics = [{
 
 let playing = false;
 
-musics.forEach((music, index) => {
+const A_Music = musics.filter((music, index) => {
   const audio = new Audio(music.music);
-  let down_arrow = document.querySelector("button#down_arrow");
-  let titulo = document.querySelectorAll("p.titulo");
-
   images[index].src = (music.img);
   nomes[index].innerText = (music.nome);
+  buttons[index].addEventListener('click', () => {
+    audio.play()
+    duracaoMusica.textContent = segundosParaMinutos(Math.floor(audio.duration));
 
-  function segundosParaMinutos(segundos) {
-    let campoMinutos = Math.floor(segundos / 60);
-    let campoSegundos = segundos % 60;
-    if (campoSegundos < 10) {
-      campoSegundos = '0' + campoSegundos;
-    }
-    return campoMinutos+':'+campoSegundos;
-  }
 
-  buttons[index].addEventListener('click',
-    () => {
-      audio.play()
-      duracaoMusica.textContent = segundosParaMinutos(Math.floor(audio.duration));
+    audio.addEventListener('timeupdate',
+      () => {
+        seekbar.value = parseInt((audio.currentTime/audio.duration)*100);
+        let tempoDecorrido = document.querySelector('#currentTime');
+        tempoDecorrido.textContent = segundosParaMinutos(Math.floor(audio.currentTime));
+      });
 
-      stop.addEventListener('click',
-        () => {
-          if (playing) {
-            audio.play();
-            stop.src = "assets/img/break.png"
-            playing = false;
-          } else {
-            stop.src = "./assets/img/button_play.png"
-            audio.pause();
-            playing = true;
-          };
-        });
+    seekbar.addEventListener('change',
+      () => {
+        audio.currentTime = seekbar.value*audio.duration/100;
+      });
 
-      audio.addEventListener('timeupdate',
-        () => {
-          seekbar.value = parseInt((audio.currentTime/audio.duration)*100);
-          let tempoDecorrido = document.querySelector('#currentTime');
-          tempoDecorrido.textContent = segundosParaMinutos(Math.floor(audio.currentTime));
-        });
+    seekbar.classList.add('active');
+    listening.classList.add('active');
+    imageSelect.classList.remove('active');
+    footer.classList.add('active');
+    containermusic.style.display = "none";
+    time_container.style.display = "flex";
+    buttonsControlls.style.display = "flex";
+    down_arrow.style.display = "block";
+    down_arrow.classList.remove('active');
+    imageSelect.src = (music.img);
+    for (let i = 0; i < titulo.length; i++) {
+      titulo[i].innerText = (music.nome);
+    };
 
-      seekbar.addEventListener('change',
-        () => {
-          audio.currentTime = seekbar.value*audio.duration/100;
-        });
-
-      seekbar.classList.add('active');
-      listening.classList.add('active');
-      imageSelect.classList.remove('active');
-      footer.classList.add('active');
-      containermusic.style.display = "none";
-      time_container.style.display = "flex";
-      buttonsControlls.style.display = "flex";
-      down_arrow.style.display = "block";
-      down_arrow.classList.remove('active');
-      imageSelect.src = (music.img);
-      for (let i = 0; i < titulo.length; i++) {
-        titulo[i].innerText = (music.nome);
-      };
-      DownButton()
-    });
+stop.addEventListener('click',
+  () => {
+    if (playing) {
+        audio.play();
+      stop.src = "assets/img/break.png"
+      playing = false;
+    } else {
+      stop.src = "./assets/img/button_play.png"
+      audio.pause();
+      playing = true;
+    };
+  });
+    DownButton()
+  });
 });
+
+
+function segundosParaMinutos(segundos) {
+  let campoMinutos = Math.floor(segundos / 60);
+  let campoSegundos = segundos % 60;
+  if (campoSegundos < 10) {
+    campoSegundos = '0' + campoSegundos;
+  }
+  return campoMinutos+':'+campoSegundos;
+}
 
 function DownButton() {
   let downArrow = true;
