@@ -59,16 +59,39 @@ const musics = [{
     music: "assets/music/Override.mp3"
   }];
 
-let playing = false;
+let songIndex = 2;
+
 
 const A_Music = musics.filter((music, index) => {
+  function loadSong(musics) {
+    images[index].src = (music.img);
+    nomes[index].innerText = (music.nome);
+  }
+  loadSong(musics[songIndex]);
   const audio = new Audio(music.music);
-  images[index].src = (music.img);
-  nomes[index].innerText = (music.nome);
   buttons[index].addEventListener('click', () => {
-    audio.play()
+    function playSound () {
+      let playing = true;
+      stop.addEventListener('click',
+        () => {
+          if (playing) {
+            audio.play();
+            stop.src = "assets/img/break.png"
+            playing = false;
+          } else {
+            stop.src = "./assets/img/button_play.png"
+            audio.pause();
+            playing = true;
+          };
+        });
+    }
+    
+    playSound()
+    for (let i = 0; i < titulo.length; i++) {
+      titulo[i].innerText = (music.nome);
+    };
+    imageSelect.src = (music.img);
     duracaoMusica.textContent = segundosParaMinutos(Math.floor(audio.duration));
-
 
     audio.addEventListener('timeupdate',
       () => {
@@ -91,25 +114,37 @@ const A_Music = musics.filter((music, index) => {
     buttonsControlls.style.display = "flex";
     down_arrow.style.display = "block";
     down_arrow.classList.remove('active');
-    imageSelect.src = (music.img);
-    for (let i = 0; i < titulo.length; i++) {
-      titulo[i].innerText = (music.nome);
-    };
+  });
 
-stop.addEventListener('click',
-  () => {
-    if (playing) {
-        audio.play();
-      stop.src = "assets/img/break.png"
-      playing = false;
-    } else {
-      stop.src = "./assets/img/button_play.png"
-      audio.pause();
-      playing = true;
-    };
-  });
-    DownButton()
-  });
+  DownButton()
+    function DownButton() {
+      let downArrow = true;
+      down_arrow.addEventListener('click',
+        () => {
+          if (downArrow) {
+            time_container.style.display = "none";
+            buttonsControlls.style.display = "none";
+            down_arrow.style.display = "flex";
+            down_arrow.classList.add('active');
+            seekbar.classList.remove('active');
+            listening.classList.remove('active');
+            listening.style.display = "flex";
+            imageSelect.classList.add('active');
+            containermusic.style.display = "flex";
+            downArrow = false;
+          } else {
+            time_container.style.display = "flex";
+            buttonsControlls.style.display = "flex";
+            down_arrow.style.display = "block";
+            down_arrow.classList.remove('active');
+            seekbar.classList.add('active');
+            listening.classList.add('active');
+            imageSelect.classList.remove('active');
+            containermusic.style.display = "none";
+            downArrow = true;
+          }
+        });
+    }
 });
 
 
@@ -120,34 +155,4 @@ function segundosParaMinutos(segundos) {
     campoSegundos = '0' + campoSegundos;
   }
   return campoMinutos+':'+campoSegundos;
-}
-
-function DownButton() {
-  let downArrow = true;
-  down_arrow.addEventListener('click',
-    () => {
-
-      if (downArrow) {
-        time_container.style.display = "none";
-        buttonsControlls.style.display = "none";
-        down_arrow.style.display = "flex";
-        down_arrow.classList.add('active');
-        seekbar.classList.remove('active');
-        listening.classList.remove('active');
-        listening.style.display = "flex";
-        imageSelect.classList.add('active');
-        containermusic.style.display = "flex";
-        downArrow = false;
-      } else {
-        time_container.style.display = "flex";
-        buttonsControlls.style.display = "flex";
-        down_arrow.style.display = "block";
-        down_arrow.classList.remove('active');
-        seekbar.classList.add('active');
-        listening.classList.add('active');
-        imageSelect.classList.remove('active');
-        containermusic.style.display = "none";
-        downArrow = true;
-      }
-    });
 }
