@@ -59,8 +59,7 @@ const musics = [{
     music: "assets/music/Override.mp3"
   }];
 
-let songIndex = 2;
-
+let songIndex = 1;
 
 const A_Music = musics.filter((music, index) => {
   function loadSong(musics) {
@@ -85,7 +84,6 @@ const A_Music = musics.filter((music, index) => {
           };
         });
     }
-    
     playSound()
     for (let i = 0; i < titulo.length; i++) {
       titulo[i].innerText = (music.nome);
@@ -114,10 +112,9 @@ const A_Music = musics.filter((music, index) => {
     buttonsControlls.style.display = "flex";
     down_arrow.style.display = "block";
     down_arrow.classList.remove('active');
-  });
-
-  DownButton()
+    DownButton()
     function DownButton() {
+      playSound()
       let downArrow = true;
       down_arrow.addEventListener('click',
         () => {
@@ -145,6 +142,7 @@ const A_Music = musics.filter((music, index) => {
           }
         });
     }
+  });
 });
 
 
