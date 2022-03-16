@@ -69,6 +69,7 @@ const A_Music = musics.filter((music, index) => {
   loadSong(musics[songIndex]);
   const audio = new Audio(music.music);
   buttons[index].addEventListener('click', () => {
+    duracaoMusica.textContent = segundosParaMinutos(Math.floor(audio.duration));
     function playSound () {
       let playing = true;
       stop.addEventListener('click',
@@ -89,8 +90,7 @@ const A_Music = musics.filter((music, index) => {
       titulo[i].innerText = (music.nome);
     };
     imageSelect.src = (music.img);
-    duracaoMusica.textContent = segundosParaMinutos(Math.floor(audio.duration));
-
+    
     audio.addEventListener('timeupdate',
       () => {
         seekbar.value = parseInt((audio.currentTime/audio.duration)*100);
