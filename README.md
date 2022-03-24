@@ -1,6 +1,5 @@
 # Music Player
 A music player make with pure HTML, CSS, JavaScript
-https://jonathansaan.github.io/music-player/
 
 ## Principal screen
 ![](https://github.com/JonathanSaan/music-player/blob/40838d2b5feeb67b84e22c7ee4556aafd0553859/Screenshot_2022-03-12-10-34-56-1.png)
