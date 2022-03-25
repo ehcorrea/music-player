@@ -4,6 +4,7 @@ import './Music.css';
 
 export const Music = () => {
   return (
+    <html>
     <div className="container"> 
       <h1>Badass Music</h1>
       <div id="list">
@@ -15,19 +16,22 @@ export const Music = () => {
         <ButtonMusics></ButtonMusics>
       </div>
     </div>
+    </html>
   );
 };
 
-export function ButtonMusics({ AllMusic }) {
-
-  const TheDados = AllMusic.map(dado =>
+function ButtonMusics({ AllMusic }) {
+  
+  const TheDados = AllMusic.map(dado => 
       <div className="music" key={dado.id}>
         <img className="img" src={dado.img} />
         <p> {dado.nome} </p>
       </div>
-    )
+  )
   
   return(
       {TheDados}
     )
 };
+
+
