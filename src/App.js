@@ -1,10 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import { DataMusic } from './components/DataMusic';
-import { Music } from './components/Music';
+import musics from "./mocks/musics";
+import { Music } from "./components/Music";
 
 export const App = () => {
-  return(
-    <Music AllMusic={DataMusic}></Music>
+  return (
+    <div>
+      <Music AllMusics={musics} />;
+    </div>
   );
 };
