@@ -1,0 +1,195 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #232831;
+  color: white;
+}
+
+div#list ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: yellow;
+  border-bottom: 2px solid yellow;
+  height: 2rem;
+  width: 7rem;
+}
+
+div#containermusic {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  margin: 10px 0;
+  text-align: center;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  background-color: #232831;
+  color: white;
+  border: none;
+  height: 5.5rem;
+  width: 100%;
+}
+
+div#containermusic button img {
+  height: 4rem;
+  margin: 0 1rem;
+}
+
+div#listening {
+  display: none;
+  position: fixed;
+  align-items: center;
+  background-color: #1d2324;
+  height: 4em;
+  width: 100%;
+  bottom: 0;
+  z-index: 2;
+}
+
+input.active {
+  margin: 65vh 0 0 0;
+  width: 49vh;
+}
+
+input {
+  -webkit-appearance: none;
+  position: absolute;
+  background: lightgray;
+  height: 2px;
+  width: 100%;
+  margin: -65px 0 0 0;
+  overflow: hidden;
+}
+
+input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 3px;
+  cursor: pointer;
+  box-shadow: -500px 0 0 500px green;
+}
+
+div#listening button img {
+  height: 25px;
+}
+
+button#down_arrow {
+  background: none;
+  height: 2rem;
+  width: 1.8rem;
+  margin: .5rem -40vh .3rem 0;
+}
+
+button#down_arrow.active {
+  position: absolute;
+  margin: 0 0 0 90vw;
+  transform: rotate(180deg);
+}
+
+div#listening.active {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+div#listening img.imageSelect.active {
+  height: 4em;
+  margin: 0;
+}
+
+div#listening img.imageSelect {
+  height: 50vh;
+  margin: 0 0 3vh 0;
+}
+
+div#listening p {
+  white-space: nowrap;
+  text-align: center;
+}
+
+div#listening ul {
+  display: flex;
+  margin: -.1rem 0 0 0;
+  justify-content: space-between;
+  width: 48vh;
+  list-style-type: none;
+}
+
+div#buttonsControlls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 6rem;
+  width: 20.4rem;
+}
+
+div#buttonsControlls button {
+  display: flex;
+  background: none;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 50px;
+}
+
+footer {
+  background-color: #000000;
+  height: auto;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+
+footer main {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer main h2 {
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+}
+
+footer.active {
+  height: 150px;
+}
+
+@media(max-height: 400px) {
+  input.active {
+    margin: 16rem 0 0 0;
+  }
+}
+
+@media(min-width: 900px) {
+  button#down_arrow {
+    margin: .4rem -15.6rem 0 0;
+  }
+  button#down_arrow.active {
+    margin: 0 0 0 96vw;
+  }
+  input.active {
+    margin: 23.5rem 0 0 0;
+    width: 18rem;
+  }
+  div#listening img.imageSelect {
+    height: 18em;
+    margin: 0 0 1rem 0;
+  }
+  div#listening ul {
+    margin: -.6rem 0 0 0;
+    width: 18rem;
+  }
+}
