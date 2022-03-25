@@ -3,7 +3,7 @@ import ButtonMusics from "../ButtonMusic";
 
 import "./Music.css";
 
-export const Music = ({ AllMusics }) => {
+const Music = ({ AllMusics }) => {
   return (
     <div className="container">
       <h1>Badass Music</h1>
@@ -18,3 +18,5 @@ export const Music = ({ AllMusics }) => {
     </div>
   );
 };
+
+export default Music;
